@@ -119,14 +119,14 @@ let adicionarParticipante = (event) => {
   // Verifica se o participante existe
   let participanteExiste = participantes.find(
     // Forma quando ele tem que retorna direto um dado
-    (p) => p.email = participante.email
+    (p) => p.email == participante.email
   )
 
   if(participanteExiste) {
     alert("Email já existe")
     return
   }
-
+  
   // Atualiza a lista com a nova informção e com as que já estavam
   // Conceito de "Spread" -> "...participantes"
   participantes = [participante, ...participantes] 
@@ -139,13 +139,14 @@ let adicionarParticipante = (event) => {
 
 let fazerCheckIn = (event) => {
   // Confirma se realmente quer fazer o Check-in
-  let mensagemConfirmação = "Tem certeza que deseja fazer o check-in"
-  if(confirm(mensagemConfirmação) == false) {
+  let mensagemConfirmacao = "Tem certeza que deseja fazer o check-in"
+
+  if(confirm(mensagemConfirmacao) == false) {
     return
   }
 
   // Encontrar o participante dentro da lista
-  let participante = participantes.find(
+  const participante = participantes.find(
     (p) => p.email == event.target.dataset.email
   )
 
